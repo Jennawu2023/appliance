@@ -45,6 +45,31 @@ namespace ModernAppliances
                     // Write "Appliance has been checked out."
                 // Otherwise (appliance isn't available)
                     // Write "The appliance is not available to be checked out."
+          
+            long item_num = 0;
+            Console.WriteLine("Enter item number of an Appliance:");
+
+            string input_str = Console.ReadLine();
+            long inp = long.Parse(input_str);
+
+            bool flag = false;  
+
+            List<Appliances> appliances = ReadAppliances();
+            //DisplayAppliancesFromList(appliances, 26);
+
+            for (int i = 0; i < appliances.Count; i++)
+            {
+                if (appliances[i].get_ItemNumber == inp)
+                {
+                    Console.WriteLine("Matching Appliances: ");
+                    Console.WriteLine(appliances[i]);
+                    Console.WriteLine("Appliance has been checked out!");
+                    appliances[i].Checkout();
+                    flag = true;
+                    
+                }
+            }
+            if (flag == false) Console.WriteLine("No appliances found with that item number.");
         }
 
         /// <summary>
@@ -52,20 +77,30 @@ namespace ModernAppliances
         /// </summary>
         public override void Find()
         {
-            // Write "Enter brand to search for:"
 
-            // Create string variable to hold entered brand
-            // Get user input as string and assign to variable.
+            Console.WriteLine("Enter brand to search for:");
 
-            // Create list to hold found Appliance objects
+            string input_str = Console.ReadLine();
 
-            // Iterate through loaded appliances
-                // Test current appliance brand matches what user entered
-                    // Add current appliance in list to found list
+            bool flag = false;
 
+            List<Appliances> appliances = ReadAppliances();
 
-            // Display found appliances
-            // DisplayAppliancesFromList(found, 0);
+            bool isEqual = false;
+
+            for (int i = 0; i < appliances.Count; i++)
+            {
+                isEqual = string.Equals(appliances[i].get_BrandName, input_str, StringComparison.OrdinalIgnoreCase);
+
+                if(isEqual){
+                    Console.WriteLine("Matching Appliances: ");
+                    Console.WriteLine(appliances[i]);
+                    Console.WriteLine('\n');
+                    flag = true;
+
+                }
+            }
+            if (flag == false) Console.WriteLine("No appliances found with that brand name.");
         }
 
         /// <summary>

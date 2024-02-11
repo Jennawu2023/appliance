@@ -1,62 +1,73 @@
-﻿namespace ModernAppliances
+﻿/***********************************************************************************
+
+NAME: Grantly
+ID:000830439
+DATE: FEB 07
+
+
+
+***********************************************************************************/
+
+
+using Modern_Appliances;
+
+namespace ModernAppliances
 {
     internal class Program
     {
-        /// <summary>
-        /// Entry point to program
-        /// </summary>
-        /// <param name="args">Command line arguments</param>
+
         static void Main(string[] args)
         {
-            ModernAppliances modernAppliances = new MyModernAppliances();
-            ModernAppliances.Options option = ModernAppliances.Options.None;
-            
-            while (option != ModernAppliances.Options.SaveExit)
+
+            Modernappliances modernAppliances = new ModernAppliance();
+            Modernappliances.Options option = Modernappliances.Options.None;
+
+            while (option != Modernappliances.Options.SaveExit)
             {
                 modernAppliances.DisplayMenu();
 
-                option = Enum.Parse<ModernAppliances.Options>(Console.ReadLine());
-                
+                option = Enum.Parse<Modernappliances.Options>(Console.ReadLine());
+
                 switch (option)
                 {
-                    case ModernAppliances.Options.Checkout:
-                    {
-                        modernAppliances.Checkout();
+                    case Modernappliances.Options.Checkout:
+                        {
+                            modernAppliances.Checkout();
 
-                        break;
-                    }
-                    case ModernAppliances.Options.Find:
-                    {
-                        modernAppliances.Find();
+                            break;
+                        }
+                    case Modernappliances.Options.Find:
+                        {
+                            modernAppliances.Find();
 
-                        break;
-                    }
-                    case ModernAppliances.Options.DisplayType:
-                    {
-                        modernAppliances.DisplayType();
+                            break;
+                        }
+                    case Modernappliances.Options.DisplayType:
+                        {
+                            modernAppliances.DisplayType();
 
-                        break;
-                    }
-                        
-                    case ModernAppliances.Options.RandomList:
-                    {
-                        modernAppliances.RandomList();
-                        break;
-                    }
-                    case ModernAppliances.Options.SaveExit:
-                    {
-                        modernAppliances.Save();
-                        break;
-                    }
+                            break;
+                        }
+
+                    case Modernappliances.Options.RandomList:
+                        {
+                            modernAppliances.RandomList();
+                            break;
+                        }
+                    case Modernappliances.Options.SaveExit:
+                        {
+                            modernAppliances.Save();
+                            break;
+                        }
                     default:
-                    {
-                        Console.WriteLine("Invalid option entered. Please try again.");
-                        break;
-                    }
+                        {
+                            Console.WriteLine("Wrong choice! Please try again.");
+                            break;
+                        }
                 }
             }
 
-            
+
         }
     }
 }
